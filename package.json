@@ -1,0 +1,24 @@
+{
+  "name": "lambda-calculus-trees",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/cytoscape-cxtmenu": "^3.4.4",
+    "@types/cytoscape-dagre": "^2.3.3",
+    "typescript": "~5.8.3",
+    "vite": "^7.1.2"
+  },
+  "dependencies": {
+    "cytoscape": "^3.33.1",
+    "cytoscape-cxtmenu": "^3.5.0",
+    "cytoscape-dagre": "^2.5.0",
+    "nanoid": "^5.1.5",
+    "notyf": "^3.10.0"
+  }
+}

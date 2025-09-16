@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Lambda calculus tree renderer</title>
+    <meta name="description" content="A lambda calculus expression parser and tree renderer"/>
+    <meta property="og:title" content="Lambda calculus tree renderer"/>
+    <meta property="og:description" content="A lambda calculus expression parser and tree renderer"/>
+    <meta property="og:image" content="https://lambda-calc-tree.denerds.eu/screenshot.png"/>
+    <meta property="og:type" content="website"/>
+</head>
+<body>
+<div class="menu">
+    <b>Version 1.2.2</b>
+    <b>Menu</b>
+    <form id="eval-input">
+        <input id="expression" type="text" placeholder="Enter expression"/>
+        <button type="submit">Evaluate</button>
+    </form>
+    <input id="clean-expression" type="text" readonly disabled/>
+    <button type="button" id="save-button">Save term</button>
+    <button type="button" id="show-saved-terms-btn">
+        Saved terms
+    </button>
+    <br/>
+    <button
+            onclick="document.getElementById('changelog').showModal()"
+    >
+        Changelog
+    </button>
+    <button
+            onclick="document.getElementById('help-dialog').showModal()"
+    >
+        Help
+    </button>
+</div>
+<div id="app"></div>
+<dialog id="changelog">
+    <h2>Changelog</h2>
+    <h3>1.2.2</h3>
+    <ul>
+        <li>Fix: logic for when brackets are needed during conversion from tree to string</li>
+    </ul>
+    <h3>1.2.1</h3>
+    <ul>
+        <li>Fix: allow saved term names to start with 'c'</li>
+    </ul>
+    <h3>1.2.0</h3>
+    <ul>
+        <li>Feature: saving terms</li>
+        <li>QoL: allow 'L' to represent lambda (λ)</li>
+        <li>QoL: show errors as toast to user</li>
+    </ul>
+    <h3>1.1.0</h3>
+    <ul>
+        <li>Feature: Allow left click to open context menu</li>
+    </ul>
+    <h3>1.0.0</h3>
+    <ul>
+        <li>Initial release</li>
+    </ul>
+    <form method="dialog">
+        <button type="submit">Close</button>
+    </form>
+</dialog>
+<dialog id="help-dialog">
+    <h2>Welcome</h2>
+    <p>This is an expression parser that renders a tree. In the top right you can find an input field to edit the
+        expression, or you can hold click on nodes to get a context menu with editing options. This renderer also has
+        support for β-reduction (also in the context menu).</p>
+    <p>In the input field you use '\', 'L' or 'λ' (e.g. '\x' or 'Lx' to represent 'λx') to represent lambda. You can also use '$' as a
+        prefix for known terms. (e.g. $omega)</p>
+    <p>Known terms are:</p>
+    <ul>
+        <li>Ω (alternatives are: o, omega)</li>
+        <li>Y (fixed point combinator)</li>
+        <li>I (or identity)</li>
+        <li>Church numerals: c_ (e.g. c0, c10, etc.)</li>
+    </ul>
+    <form method="dialog">
+        <button type="submit">Close</button>
+    </form>
+</dialog>
+<dialog id="saved-terms-dialog">
+    <h2>Saved Terms</h2>
+    <div id="saved-terms"></div>
+    <form method="dialog">
+        <button type="submit">Close</button>
+    </form>
+</dialog>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>
